@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isVowel(char ch) {
+    ch = tolower(ch); // convert to lowercase
+    return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
+}
+
+int main() {
+    string str = "Hello World";
+    int vowels = 0, consonants = 0;
+
+    for (char ch : str) {
+        if (isalpha(ch)) {       // consider only letters
+            if (isVowel(ch))
+                vowels++;
+            else
+                consonants++;
+        }
+    }
+
+    cout << "Vowels: " << vowels << endl;
+    cout << "Consonants: " << consonants << endl;
+}
