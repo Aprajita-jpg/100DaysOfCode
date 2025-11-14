@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string str = "hello world";
+    unordered_map<char, int> freq;
+
+    // Count frequency
+    for (char ch : str) {
+        if (isalpha(ch)) // count only letters (optional)
+            freq[ch]++;
+    }
+
+    // Print frequencies
+    for (auto &p : freq) {
+        cout << p.first << " : " << p.second << endl;
+    }
+}
