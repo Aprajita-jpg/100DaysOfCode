@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> replaceWithGreatest(vector<int> &arr) {
+    int n = arr.size();
+    int maxRight = -1;        // last element becomes -1
+    int temp;
+
+    for (int i = n - 1; i >= 0; i--) {
+        temp = arr[i];        // store current value
+        arr[i] = maxRight;    // replace with greatest on right
+        maxRight = max(maxRight, temp);
+    }
+
+    return arr;
+}
+
+int main() {
+    vector<int> arr = {17, 18, 5, 4, 6, 1};
+
+    vector<int> result = replaceWithGreatest(arr);
+
+    for (int x : result) cout << x << " ";
+}
