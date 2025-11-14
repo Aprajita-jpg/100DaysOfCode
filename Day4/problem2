@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void rightRotate(vector<int>& arr, int k) {
+    int n = arr.size();
+    k = k % n;  // important to avoid overflow
+
+    // 1. Reverse whole array
+    reverse(arr.begin(), arr.end());
+
+    // 2. Reverse first k elements
+    reverse(arr.begin(), arr.begin() + k);
+
+    // 3. Reverse remaining elements
+    reverse(arr.begin() + k, arr.end());
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    int k = 2;
+
+    rightRotate(arr, k);
+
+    for(int x : arr) cout << x << " ";
+    return 0;
+}
