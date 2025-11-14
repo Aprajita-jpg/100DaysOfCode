@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void findFrequency(vector<int>& arr) {
+    unordered_map<int, int> freq;
+
+    for (int x : arr) {
+        freq[x]++;    // count frequency
+    }
+
+    // print frequencies
+    for (auto &p : freq) {
+        cout << p.first << " -> " << p.second << endl;
+    }
+}
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3, 3, 3, 4};
+
+    findFrequency(arr);
+}
