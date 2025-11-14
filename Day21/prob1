@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int kthSmallest(vector<int> &arr, int k) {
+    sort(arr.begin(), arr.end());
+    return arr[k - 1]; // k-th smallest (1-based indexing)
+}
+
+int main() {
+    vector<int> arr = {7, 10, 4, 3, 20, 15};
+    int k = 3;
+
+    cout << "Kth Smallest = " << kthSmallest(arr, k);
+    return 0;
+}
