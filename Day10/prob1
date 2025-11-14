@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool isMonotonic(vector<int>& nums) {
+    bool inc = true, dec = true;
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] > nums[i-1]) 
+            dec = false;   // can't be decreasing
+        if (nums[i] < nums[i-1]) 
+            inc = false;   // can't be increasing
+    }
+
+    return inc || dec;
+}
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3};
+    
+    if (isMonotonic(arr))
+        cout << "Array is monotonic";
+    else
+        cout << "Array is NOT monotonic";
+}
