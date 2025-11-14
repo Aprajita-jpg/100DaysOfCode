@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string str = "Hello, World! 123";
+    string result = "";
+
+    for (char ch : str) {
+        if (isalpha(ch))  // keep only alphabet letters
+            result += ch;
+    }
+
+    cout << "Original: " << str << endl;
+    cout << "Alphabets only: " << result << endl;
+}
