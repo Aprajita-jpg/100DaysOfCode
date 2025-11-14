@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int secondLargest(vector<int>& arr) {
+    int largest = INT_MIN, second = INT_MIN;
+
+    for (int x : arr) {
+        if (x > largest) {
+            second = largest;   // update second
+            largest = x;        // update largest
+        }
+        else if (x > second && x != largest) {
+            second = x;         // update second only
+        }
+    }
+
+    return (second == INT_MIN) ? -1 : second; // if no second largest
+}
+
+int main() {
+    vector<int> arr = {10, 20, 4, 45, 99, 99};
+    cout << "Second Largest: " << secondLargest(arr);
+}
