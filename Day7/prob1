@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int majorityElement(vector<int>& nums) {
+    int candidate = 0, count = 0;
+
+    // Step 1: Find candidate
+    for (int x : nums) {
+        if (count == 0)
+            candidate = x;
+
+        count += (x == candidate) ? 1 : -1;
+    }
+
+    // Step 2 (optional): Verify if candidate is majority
+    int freq = 0;
+    for (int x : nums)
+        if (x == candidate) freq++;
+
+    return (freq > nums.size() / 2) ? candidate : -1;
+}
+
+int main() {
+    vector<int> arr = {2, 2, 1, 1, 1, 2, 2};
+    cout << "Majority Element: " << majorityElement(arr);
+}
