@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int findRepeating(vector<int> &arr) {
+    unordered_map<int, int> freq;
+
+    for (int x : arr) {
+        freq[x]++;
+        if (freq[x] > 1) return x;   // repeating found
+    }
+    return -1;
+}
+
+int main() {
+    vector<int> arr = {1, 3, 4, 2, 2};
+    cout << "Repeating element: " << findRepeating(arr);
+}
