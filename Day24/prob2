@@ -1,0 +1,33 @@
+ #include <bits/stdc++.h>
+using namespace std;
+
+struct Item {
+    int value;
+    char id;
+};
+
+// Helper function to print array
+void printItems(const vector<Item>& items) {
+    for (auto &it : items) {
+        cout << "(" << it.value << "," << it.id << ") ";
+    }
+    cout << endl;
+}
+
+// Comparator to sort by value
+bool cmp(Item a, Item b) {
+    return a.value < b.value;
+}
+
+int main() {
+    vector<Item> items = {{4,'a'}, {2,'b'}, {4,'c'}, {3,'d'}};
+
+    cout << "Original Array: ";
+    printItems(items);
+
+    // Stable sort preserves relative order of equal elements
+    stable_sort(items.begin(), items.end(), cmp);
+
+    cout << "After Stable Sort: ";
+    printItems(items);
+}
