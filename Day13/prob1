@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int findMaxConsecutiveOnes(vector<int>& nums) {
+    int maxCount = 0, currentCount = 0;
+
+    for (int x : nums) {
+        if (x == 1) {
+            currentCount++;              // increase streak
+            maxCount = max(maxCount, currentCount);
+        } else {
+            currentCount = 0;            // reset streak
+        }
+    }
+
+    return maxCount;
+}
+
+int main() {
+    vector<int> nums = {1, 1, 0, 1, 1, 1};
+    cout << findMaxConsecutiveOnes(nums);
+}
