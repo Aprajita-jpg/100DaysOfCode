@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int firstPos(vector<int>& nums, int target) {
+    int l = 0, r = nums.size() - 1, ans = -1;
+
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+
+        if (nums[mid] == target) {
+            ans = mid;
+            r = mid - 1;  // search on left side
+        }
+        else if (nums[mid] > target) {
+            r = mid - 1;
+        }
+        else {
+            l = mid + 1;
+        }
+    }
+    return ans;
+}
+
+int lastPos(vector<int>& nums, int target) {
+    int l = 0, r = nums.size() - 1, ans = -1;
+
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+
+        if (nums[mid] == target) {
+            ans = mid;
+            l = mid + 1;  // search on right side
+        }
+        else if (nums[mid] > target) {
+            r = mid - 1;
+        }
+        else {
+            l = mid + 1;
+        }
+    }
+    return ans;
+}
+
+int main() {
+    vector<int> arr = {2, 4, 4, 4, 6, 7};
+    int target = 4;
+
+    int first = firstPos(arr, target);
+    int last = lastPos(arr, target);
+
+    cout << "First Position: " << first << endl;
+    cout << "Last Position: " << last << endl;
+}
