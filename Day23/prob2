@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> unionSortedArrays(vector<int>& a, vector<int>& b) {
+    int n = a.size(), m = b.size();
+    vector<int> result;
+    int i = 0, j = 0;
+
+    while (i < n && j < m) {
+        // Skip duplicates in a
+        while (i > 0 && i < n && a[i] == a[i-1]) i++;
+        // Skip duplicates in b
+        while (j > 0 && j < m && b[j] == b[j-1]) j++;
+
+        if (i < n && j < m) {
+            if (a[i] < b[j]) {
+                result.push_back(a[i]);
+                i++;
+            } else if (b[j] < a[i]) {
+                result.push_back(b[j]);
+                j++;
+            } else { // a[i] == b[j]
+                result.push_back(a[i]);
+                i++;
+                j++;
+            }
+        }
+    }
+
+    // Add remaining elements
+    while (i < n) {
+        if (i == 0 || a[i]()
