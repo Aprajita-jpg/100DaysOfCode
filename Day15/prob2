@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void reverseArray(vector<int>& arr, int start, int end) {
+    while (start < end) {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
+
+void rightRotate(vector<int>& arr, int k) {
+    int n = arr.size();
+    k = k % n;  // handle larger k
+
+    // Step 1: Reverse whole array
+    reverseArray(arr, 0, n - 1);
+
+    // Step 2: Reverse first k elements
+    reverseArray(arr, 0, k - 1);
+
+    // Step 3: Reverse remaining elements
+    reverseArray(arr, k, n - 1);
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
+    int k = 3;
+
+    rightRotate(arr, k);
+
+    for (int x : arr) cout << x << " ";
+}
