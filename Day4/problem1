@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3, 3, 4}; 
+    
+    unordered_map<int, int> freq;
+
+    // Step 1: Count frequency of each element
+    for(int x : arr) {
+        freq[x]++;
+    }
+
+    int maxFreq = 0;
+
+    // Step 2: Find maximum frequency
+    for(auto &p : freq) {
+        if(p.second > maxFreq) {
+            maxFreq = p.second;
+        }
+    }
+
+    int countMaxFreqElements = 0;
+
+    // Step 3: Count how many elements have that maximum frequency
+    for(auto &p : freq) {
+        if(p.second == maxFreq) {
+            countMaxFreqElements++;
+        }
+    }
+
+    cout << "Maximum Frequency = " << maxFreq << endl;
+    cout << "Count of elements with maximum frequency = " << countMaxFreqElements << endl;
+
+    return 0;
+}
