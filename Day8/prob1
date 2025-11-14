@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+vector<int> removeDuplicates(vector<int>& arr) {
+    unordered_set<int> seen;
+    vector<int> result;
+
+    for (int x : arr) {
+        if (seen.find(x) == seen.end()) {
+            result.push_back(x);   // keep first occurrence
+            seen.insert(x);
+        }
+    }
+    return result;
+}
+
+int main() {
+    vector<int> arr = {4, 2, 5, 2, 4, 3, 1};
+    vector<int> ans = removeDuplicates(arr);
+
+    for (int x : ans) cout << x << " ";
+}
