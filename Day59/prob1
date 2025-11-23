@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+// Function to print linked list (safe, stops if cycle exists)
+void printList(Node* head) {
+    Node* temp = head;
+    int count = 0; // safety limit to prevent infinite loop
+    while (temp != nullptr && count < 50) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+        count++;
+    }
+    cout << "NULL" << endl;
+}
+
+// Detect and remove cycle
+void removeCycle(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+
+    // Detect cycle
+    bool hasCycle = false;
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            hasCycle =
