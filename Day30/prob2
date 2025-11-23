@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string rotateString(string s, int k) {
+    int n = s.length();
+    k = k % n;  // handle large K
+
+    // Step 1: Reverse whole string
+    reverse(s.begin(), s.end());
+
+    // Step 2: Reverse first k characters
+    reverse(s.begin(), s.begin() + k);
+
+    // Step 3: Reverse remaining characters
+    reverse(s.begin() + k, s.end());
+
+    return s;
+}
+
+int main() {
+    string s = "abcdef";
+    int k = 2;
+
+    cout << rotateString(s, k);
+    return 0;
+}
