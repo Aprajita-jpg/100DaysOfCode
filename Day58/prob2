@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+// Function to print linked list
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// Function to find middle node
+Node* findMiddle(Node* head) {
+    if (head == nullptr) return nullptr;
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow; // slow points to middle
+}
+
+int main() {
+    // Creating linked list: 10 -> 20 -> 30 -> 40 -> 50
+    Node* head = new Node(10);
+    head->next = new Node(20);
+    head->next->n
