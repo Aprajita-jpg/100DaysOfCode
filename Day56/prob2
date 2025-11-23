@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+// Function to print linked list
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// Function t
