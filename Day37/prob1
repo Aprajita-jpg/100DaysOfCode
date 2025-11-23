@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int countDigits(int n) {
+    // Base case: when number becomes 0
+    if (n == 0)
+        return 0;
+
+    // Recursive step: remove last digit and add 1
+    return 1 + countDigits(n / 10);
+}
+
+int main() {
+    int n = 56789;
+    cout << "Total digits = " << countDigits(n);
+    return 0;
+}
