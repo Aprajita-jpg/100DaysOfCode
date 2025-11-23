@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+void printDecreasing(int n) {
+    // Base case
+    if (n == 0)
+        return;
+
+    // Print current number
+    cout << n << " ";
+
+    // Recursive call
+    printDecreasing(n - 1);
+}
+
+int main() {
+    int n = 10;
+    printDecreasing(n);
+
+    return 0;
+}
