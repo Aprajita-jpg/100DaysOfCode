@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+bool isSubsequence(string s, string t) {
+    int i = 0, j = 0;
+
+    while (i < s.length() && j < t.length()) {
+        if (s[i] == t[j]) {
+            j++;     // move in t
+        }
+        i++;         // always move in s
+    }
+
+    return (j == t.length());
+}
+
+int main() {
+    string s = "abcdefg";
+    string t = "ace";
+
+    if (isSubsequence(s, t))
+        cout << "YES, it is a subsequence";
+    else
+        cout << "NO, not a subsequence";
+
+    return 0;
+}
