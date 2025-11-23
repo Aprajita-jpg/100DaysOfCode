@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+int countPrefix(string s, string prefix) {
+    int count = 0;
+    string word = "";
+    int p = prefix.length();
+
+    for (int i = 0; i <= s.length(); i++) {
+
+        // If space or end → check the formed word
+        if (i == s.length() || s[i] == ' ') {
+
+            if (word.length() >= p) {
+                // Check if prefix matches
+                bool match = true;
+                for (int j = 0; j < p; j++) {
+                    if (word[j] != prefix[j]) {
+                        match = false;
+                        break;
+                    }
+                }
+
+                if (match)
+                    count++;
+            }
+
+            word = "";  // reset for next word
+        }
+        else {
+            word += s[i];
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    string s = "apple applet apps application banana apply";
+    string prefix = "app";
+
+    cout << "Words starting with prefix: " << countPrefix(s, prefix);
+
+    return 0;
+}
