@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+string longestWord(string s) {
+    string word = "", longest = "";
+    
+    for (int i = 0; i <= s.length(); i++) {
+
+        // space or end of string → word completed
+        if (i == s.length() || s[i] == ' ') {
+            if (word.length() > longest.length())
+                longest = word;
+
+            word = "";   // reset for next word
+        }
+        else {
+            word += s[i];
+        }
+    }
+
+    return longest;
+}
+
+int main() {
+    string s = "I love programming in C++ language";
+    cout << "Longest word: " << longestWord(s);
+    return 0;
+}
