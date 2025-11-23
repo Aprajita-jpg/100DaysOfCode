@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+bool isPalindrome(string s, int left, int right) {
+    // Base case: if pointers cross, it's a palindrome
+    if (left >= right)
+        return true;
+
+    // If mismatch
+    if (s[left] != s[right])
+        return false;
+
+    // Move inward
+    return isPalindrome(s, left + 1, right - 1);
+}
+
+int main() {
+    string s = "madam";
+
+    if (isPalindrome(s, 0, s.length() - 1))
+        cout << "Palindrome";
+    else
+        cout << "Not Palindrome";
+
+    return 0;
+}
