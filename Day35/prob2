@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+// Recursive function to find factorial
+int factorial(int n) {
+    // Base case
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+
+    // Recursive call
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int n = 5;
+    int result = factorial(n);
+
+    cout << "Factorial of " << n << " = " << result;
+    return 0;
+}
