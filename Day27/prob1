@@ -1,0 +1,18 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+    string s = "programming";
+    set<char> st;
+    string result = "";
+
+    for (char c : s) {
+        if (st.insert(c).second) { 
+            result += c;
+        }
+    }
+
+    cout << result;
+    return 0;
+}
