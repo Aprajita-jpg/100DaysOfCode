@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+void printDecInc(int n) {
+    // Base case
+    if (n == 0)
+        return;
+
+    // Print decreasing part
+    cout << n << " ";
+
+    // Recursive call
+    printDecInc(n - 1);
+
+    // Print increasing part
+    cout << n << " ";
+}
+
+int main() {
+    int n = 5;
+    printDecInc(n);
+
+    return 0;
+}
