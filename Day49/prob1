@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int sumBoundary(vector<vector<int>>& mat) {
+    int n = mat.size();
+    int m = mat[0].size();
+
+    int sum = 0;
+
+    // Top row
+    for (int j = 0; j < m; j++)
+        sum += mat[0][j];
+
+    // Bottom row
+    if (n > 1) {
+        for (int j = 0; j < m; j++)
+            sum += mat[n - 1][j];
+    }
+
+    // Left column (excluding already counted corners)
+    for (int i = 1; i < n - 1; i++)
+        sum += mat[i][0];
+
+    // Right column (excluding already counted corners)
+    if (m > 1) {
+        for (int i = 1; i < n - 1; i++)
+            sum += mat[i][m - 1];
+    }
+
+    return sum;
+}
+
+int main() {
+    int n, m;
+    cout << "Enter rows & columns: ";
+    cin >> n >> m;
+
+    vector<vector<int>> mat(n, vector<int>(m));
+    cout << "Enter matrix:\n";
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < m; j++)
+            cin >> mat[i][j];
+
+    cout << "Sum of boundary elements = " << sumBoundary(mat);
+}
