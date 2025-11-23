@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void generatePowerSet(vector<int>& arr, int index, vector<int>& current) {
+    // Base case: when we reach the end
+    if (index == arr.size()) {
+        // Print current subset
+        cout << "{ ";
+        for (int x : current) cout << x << " ";
+        cout << "}" << endl;
+        return;
+    }
+
+    // Include arr[index]
+    current.push_back(arr[index]);
+    generatePowerSet(arr, index + 1, current);
+
+    // Exclude arr[index]
+    current.pop_back();
+    generatePowerSet(arr, index + 1, current);
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3};
+    vector<int> current;
+
+    generatePowerSet(arr, 0, current);
+    return 0;
+}
