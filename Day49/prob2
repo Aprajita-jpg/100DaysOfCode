@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, m;
+    cout << "Enter rows and columns: ";
+    cin >> n >> m;
+
+    vector<vector<int>> mat(n, vector<int>(m));
+
+    cout << "Enter matrix:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> mat[i][j];
+        }
+    }
+
+    // Transpose matrix
+    vector<vector<int>> trans(m, vector<int>(n));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            trans[j][i] = mat[i][j];
+        }
+    }
+
+    cout << "Transpose of matrix:\n";
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << trans[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
