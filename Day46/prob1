@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void printSortedMatrix(vector<vector<int>>& mat) {
+    vector<int> temp;
+
+    // Push all elements into 1D array
+    for (auto &row : mat) {
+        for (int x : row)
+            temp.push_back(x);
+    }
+
+    // Sort the 1D array
+    sort(temp.begin(), temp.end());
+
+    // Print sorted elements
+    for (int x : temp)
+        cout << x << " ";
+}
+
+int main() {
+    vector<vector<int>> mat = {
+        {5, 1, 9},
+        {3, 7, 2},
+        {8, 4, 6}
+    };
+
+    printSortedMatrix(mat);
+    return 0;
+}
