@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void powerSet(vector<int>& arr, int index, vector<int>& current) {
+    if (index == arr.size()) {
+        cout << "{ ";
+        for (int x : current) cout << x << " ";
+        cout << "}" << endl;
+        return;
+    }
+
+    // Include the element
+    current.push_back(arr[index]);
+    powerSet(arr, index + 1, current);
+
+    // Exclude the element
+    current.pop_back();
+    powerSet(arr, index + 1, current);
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3};
+    vector<int> current;
+
+    powerSet(arr, 0, current);
+    return 0;
+}
