@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+void permute(string s, int index) {
+    // Base case: when index reaches end → print permutation
+    if (index == s.length()) {
+        cout << s << endl;
+        return;
+    }
+
+    // Swap each character with current index
+    for (int i = index; i < s.length(); i++) {
+        swap(s[index], s[i]);        // Choose
+        permute(s, index + 1);       // Explore
+        swap(s[index], s[i]);        // Backtrack
+    }
+}
+
+int main() {
+    string s = "ABC";
+    permute(s, 0);
+    return 0;
+}
