@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+void printIncreasing(int n) {
+    // Base case
+    if (n == 0)
+        return;
+
+    // First recursive call
+    printIncreasing(n - 1);
+
+    // Print after recursion (gives increasing order)
+    cout << n << " ";
+}
+
+int main() {
+    int n = 10;
+    printIncreasing(n);
+
+    return 0;
+}
