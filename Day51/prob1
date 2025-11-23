@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void printAntiDiagonals(vector<vector<int>>& mat) {
+    int n = mat.size();
+    int m = mat[0].size();
+
+    // Upper half (including main diagonal)
+    for (int col = 0; col < m; col++) {
+        int i = 0, j = col;
+        while (i < n && j >= 0) {
+            cout << mat[i][j] << " ";
+            i++;
+            j--;
+        }
+        cout << endl;
+    }
+
+    // Lower half (excluding main diagonal)
+    for (int row = 1; row < n; row++) {
+        int i = row, j = m - 1;
+        while (i < n && j >= 0) {
+            cout << mat[i][j] << " ";
+            i++;
+            j--;
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n, m;
+    cout << "Enter rows and columns: ";
+    cin >> n >> m;
+
+    vector<vector<int>> mat(n, vector<int>(m));
+    cout << "Enter matrix:\n";
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            cin >> mat[i][j];
+
+    cout << "Anti-diagonals of the matrix:\n";
+    printAntiDiagonals(mat);
+
+    return 0;
+}
