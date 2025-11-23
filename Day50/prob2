@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void spiralTraversal(vector<vector<int>>& mat) {
+    int rows = mat.size();
+    int cols = mat[0].size();
+
+    int top = 0, bottom = rows - 1;
+    int left = 0, right = cols - 1;
+
+    while (top <= bottom && left <= right) {
+
+        // Traverse top row → left to right
+        for (int j = left; j <= right; j++)
+            cout << mat[top][j] << " ";
+        top++;
+
+        // Traverse right column → top to bottom
+        for (int i = top; i <= bottom; i++)
+            cout << mat[i][right] << " ";
+        right--;
+
+        // Traverse bottom row → right to left
+        if (top <= bottom) {
+            for (int j = ri
