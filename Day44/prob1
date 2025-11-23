@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int sumDigits(int n) {
+    // Base case: if single digit, return it
+    if (n >= 0 && n <= 9)
+        return n;
+
+    // Calculate sum of digits
+    int sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+
+    // Recursively call on the sum
+    return sumDigits(sum);
+}
+
+int main() {
+    int n = 9875;
+
+    cout << "Single digit sum = " << sumDigits(n);
+    return 0;
+}
