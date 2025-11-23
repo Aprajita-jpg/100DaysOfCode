@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+// Function to print linked list
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// Iterative reverse
+Node* reverseIterative(Node* head) {
+    Node* prev = nullptr;
+    Node* curr = head;
+    Node* next = nullptr;
+
+    while (curr != nullptr) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
+
+// Recursive reverse
+Node* reverseRecursive(Node* head) {
+    if (head == nullptr || head->next == nullptr)
+        return head;
+
+    Node* newHead = reverseRecursive(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+
+    return newHead;
+}
+
+int main() {
+    // Creatin
