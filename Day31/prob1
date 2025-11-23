@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s = "Hello World From C++";
+
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == ' ') {
+            s[i] = '@';   // replace space with @
+        }
+    }
+
+    cout << s;
+    return 0;
+}
