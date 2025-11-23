@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int findMedian(vector<vector<int>>& matrix) {
+    int r = matrix.size();
+    int c = matrix[0].size();
+
+    int low = 1;        // minimum possible value
+    int high = 1e9;     // maximum possible value
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        // count number of elements <= mid in the matrix
+        int count = 0;
+        for (int i = 0; i < r; i++) {
+            count += upper_bound(matrix[i].begin(), matrix[i].end(), mid) 
+                     - matrix[i].begin();
+        }
+
+        // If count is less than half matrix size -> move right
+        if (count <= (r * c) / 2) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return low;   // low is the median
+}
+
+int main() {
+    int r, c;
+    cout << "Enter rows and columns: ";
+    cin >> r >> c;
+
+    vector<vector<int>> matrix(r, vector<int>(c));
+    cout << "Enter row-wise sorted matrix:\n";
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            cin >> matrix[i][j];
+
+    cout << "Median of matrix = " << findMedian(matrix) << endl;
+
+    return 0;
+}
