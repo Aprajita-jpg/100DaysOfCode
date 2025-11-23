@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int r, c;
+    cout << "Enter rows and columns of matrices: ";
+    cin >> r >> c;
+
+    vector<vector<int>> mat1(r, vector<int>(c));
+    vector<vector<int>> mat2(r, vector<int>(c));
+    vector<vector<int>> sum(r, vector<int>(c));
+
+    cout << "Enter first matrix elements:\n";
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            cin >> mat1[i][j];
+
+    cout << "Enter second matrix elements:\n";
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
