@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+// Function to print linked list
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// Function to search for a node (returns position, 0-based index)
+int searchNode(Node* head, int key) {
+    Node* temp = head;
+    int pos = 0;
+    while (temp != nullptr) {
+        if (temp->d
