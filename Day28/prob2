@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s = "  Hello   world this is   C++  ";
+    int count = 0;
+
+    bool inWord = false;
+
+    for (char c : s) {
+        if (c != ' ' && !inWord) {
+            // We found the start of a new word
+            count++;
+            inWord = true;
+        }
+        else if (c == ' ') {
+            inWord = false;  // Word ended
+        }
+    }
+
+    cout << "Word count: " << count;
+    return 0;
+}
