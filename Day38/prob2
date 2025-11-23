@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int sumArray(int arr[], int n) {
+    // Base case
+    if (n == 0)
+        return 0;
+
+    // Recursive case: last element + sum of remaining elements
+    return arr[n - 1] + sumArray(arr, n - 1);
+}
+
+int main() {
+    int arr[] = {2, 4, 6, 8, 10};
+    int n = 5;
+
+    cout << "Sum of array = " << sumArray(arr, n);
+    return 0;
+}
