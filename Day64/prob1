@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to segregate even and odd nodes
+Node* segregateEvenOdd(Node* head) {
+    if (!head) return head;
+
+    Node *evenStart = NULL, *evenEnd = NULL;
+    Node *oddStart = NULL, *oddEnd = NULL;
+
+    Node* curr = head;
+
+    while (curr != NULL) {
+        int val = curr->data;
+
+        if (val % 2 == 0) {   // Even node
+            if (!evenStart) {
+                evenStart = curr;
+                evenEnd = evenStart;
+            } else {
+                evenEnd->next = curr;
+                evenEnd = evenEnd->next;
+            }
+        } else {              // Odd node
+            if (!oddStart) {
+                oddStart = curr;
+                oddEnd = oddStart;
+            } else {
+                oddEnd->next = cur
