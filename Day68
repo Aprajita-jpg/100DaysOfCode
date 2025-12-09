@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to split linked list into two halves
+void splitList(Node* head, Node*& firstHalf, Node*& secondHalf) {
+    if (!head) {
+        firstHalf = secondHalf = NULL;
+        return;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+    Node* prev*
+}
