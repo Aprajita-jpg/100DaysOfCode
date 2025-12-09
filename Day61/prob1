@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to remove duplicates from sorted linked list
+Node* removeDuplicates(Node* head) {
+    Node* current = head;
+
+    while (current != NULL && current->next != NULL) {
+        if (current->data == current->next->data) {
+            Node* temp = current->next;
+            current->next = current->next->next;
+            delete temp;   // free duplicate node
+        } else {
+            current = current->next;
+        }
+    }
+    return head;
+}
+
+// Function to insert at end
+void insert(Node*& head, int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newNode;
+}
+
+// Function to print linked list
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL";
+}
+
+int main() {
+    Node* head = NULL;
+
+    // Creating sorted linked list
+    insert(head, 1);
+    insert(head, 1);
+    insert(head, 2);
+    insert(head, 3);
+    insert(head, 3);
+    insert(head, 4);
+
+    cout << "Before Removing Duplicates:\n";
+    printList(head);
+
+    head = removeDuplicates(head);
+
+    cout << "\n\nAfter Removing Duplicates:\n";
+    printList(head);
+
+    return 0;
+}
