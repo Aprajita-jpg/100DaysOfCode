@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+class Queue {
+    Node* frontNode;
+    Node* rearNode;
+
+public:
+    Queue() {
+        frontNode = rearNode = nullptr;
+    }
+
+    bool isEmpty() {
+        return frontNode == nullptr;
+    }
+
+    void enqueue(int val) {
+        Node* newNode = new Node(val);
+        if (rearNode) rearNode->next = newNode;
+        rearNode = newNode;
+        if (!frontNode) frontNode = newNode;
+        cout << val << " enqueued\n";
+    }
+
+    void dequeue() {
+        if (isEmpty()) {
+            cout << "Queue underflow\n";
+            return;
+        }
+        Node* temp = frontNode;
+        frontNode = frontNode->next;
+        if (!frontNode) rearNode = nullptr;
+        cout << temp->data << " dequeued\n";
+        delete temp;
+    }
+
+    int front() {
+        if (isEmpty()) {
+            cout << "Queue is empty\n";
+            return -1;
+        }
+        return frontNode->data;
+    }
+
+    void printQueue() {
+        Node* curr = frontNode;
+        cout << "Queue front -> ";
+        while (curr) {
+            cout << curr->data << " ";
+            curr = curr->next;
+        }
+        cout << "<- rear\n";
+    }
+};
+
+int main() {
+    Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+
+    q.printQueue();
+
+    q.dequeue();
+    q.printQueue();
+
+    cout << "Front element: " << q.front() << endl;
+
+    return 0;
+}
