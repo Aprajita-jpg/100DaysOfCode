@@ -1,0 +1,13 @@
+void deleteNode(Node* node) {
+    // Copy next node's data into current node
+    node->data = node->next->data;
+
+    // Store next node
+    Node* temp = node->next;
+
+    // Skip next node
+    node->next = node->next->next;
+
+    // Delete next node
+    delete temp;
+}
