@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int minOperations(string A, string B) {
+    int m = A.size();
+    int n = B.size();
+    vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
+
+    // Build LCS table
+    for (int i = 0; i <= m; i++) {
+        for (int j = 0; j <= n; j++) {
+            if (i == 0 || j == 0) dp[i][j] = 0;
+            else if (A[i-1] == B[j-1]) dp[i][j] = 1 + dp[i-1][j-1];
+            else dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+        }
+    }
+
+    int lcs = dp[m][n];
+    int deletions = m - lcs;
+    int insertions = n - lcs;
+
+    return deletions + insertions;
+}
+
+int main() {
+    string A, B;
+    cin >> A >> B;
+
+    cout << minOperations(A, B) << endl;
+    return 0;
+}
