@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+
+// Function to remove adjacent duplicates
+void removeAdjacentDuplicates(Node* head) {
+    Node* curr = head;
+
+    while (curr && curr->next) {
+        if (curr->data == curr->next->data) {
+            Node* temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp;
+        } else {
+            curr = curr->next;
+        }
+    }
+}
+
+// Insert at end
+void insert(Node*& head, int val) {
+    Node* newNode = new Node(val);
+    if (!head) {
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next)
+        temp = temp->next;
+
+    temp->next = newNode;
+}
+
+// Print list
+void printList(Node* head) {
+    while (head) {
+        cout << head->data << " -> ";
+        head = head->next;
+    }
+    cout << "NULL\n";
+}
+
+int main() {
+    Node* head = nullptr;
+    insert(head, 1);
+    insert(head, 1);
+    insert(head, 2);
+    insert(head, 3);
+    insert(head, 3);
+    insert(head, 4);
+
+    cout << "Original List:\n";
+    printList(head);
+
+    removeAdjacentDuplicates(head);
+
+    cout << "After Removing Adjacent Duplicates:\n";
+    printList(head);
+
+    return 0;
+}
