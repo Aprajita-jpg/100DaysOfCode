@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Reverse linked list
+Node* reverse(Node* head) {
+    Node* prev = NULL;
+    Node* curr = head;
+
+    while (curr != NULL) {
+        Node* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    return prev;
+}
+
+// Reorder Linked List
+void reorderList(Node* head) {
+    if (!head || !head->next) return;
+
+    // Step 1: Find middle
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
