@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to partition the list
+Node* partition(Node* head, int x) {
+    Node *smallStart = NULL, *smallEnd = NULL;
+    Node *largeStart = NULL, *largeEnd = NULL;
+
+    Node* curr = head;
+
+    while (curr != NULL) {
+        if (curr->data < x) {
+            // Small list
+            if (!smallStart) {
+                smallStart = curr;
+                smallEnd = smallStart;
+            } else {
+                smallEnd->next = curr;
+                smallEnd = smallEnd->next;
+            }
+        } else {
+            // Large list
+            if (!largeStart) {
+                largeStart = curr;
+                largeEnd = largeStart;
