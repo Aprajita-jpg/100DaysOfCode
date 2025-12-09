@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int binaryToDecimal(string binary) {
+    int decimal = 0;
+    int n = binary.length();
+    for (int i = 0; i < n; i++) {
+        if (binary[i] == '1') {
+            decimal += pow(2, n - i - 1);
+        }
+    }
+    return decimal;
+}
+
+int main() {
+    string binary = "1011";
+    cout << "Binary: " << binary << endl;
+    cout << "Decimal: " << binaryToDecimal(binary) << endl;
+    return 0;
+}
