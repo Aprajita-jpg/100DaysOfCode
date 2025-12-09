@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to count occurrences of value
+int countOccurrences(Node* head, int x) {
+    int count = 0;
+    Node* curr = head;
+
+    while (curr) {
+        if (curr->data == x)
+            count++;
+        curr = curr->next;
+    }
+
+    return count;
+}
+
+// Insert at end
+void insert(Node*& head, int val) {
+    Node* newNode = new Node();
+    newNode->data =
