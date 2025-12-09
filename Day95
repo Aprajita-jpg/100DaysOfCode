@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int orangesRotting(vector<vector<int>>& grid) {
+    int rows = grid.size();
+    int cols = grid[0].size();
+    queue<pair<int,int>> q;
+    int fresh = 0;
+
+    // Push initial rotten oranges into queue
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++) {
+            if (grid[i][j] == 2) q.push({i,j});
+            else if (grid[i][j] == 1) fresh++;
+        }
+
+    if (fresh == 0) return 0;
+
+    int minutes = 0;
+    int dirs[4][2] = {{-1,0},{1,0},{0,-1},{0,1}};
+
+    while (!q.empty()) {
+        int size = q.size();
+        bool rotted = false;
+
+        for (int i = 0; i < size; i++) {
+            auto [x, y] = q.front(); q.pop();
+
+            for (auto d : dirs) {
+                int nx = x + d[0], ny = y + d[1];
+                if (nx >=0 && nx < rows && ny >=0 && ny < cols && grid[nx][ny] == 1) {
+                    grid[nx][ny] = 2;
+                    q.push({nx, ny});
+                    fresh--;
+                    rotted = true;
+                }
+            }
+        }
+
+        if (rotted) minutes++;
+    }
+
+    return fresh == 0 ? minutes : -1;
+}
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+    vector<vector<int>> grid(m, vector<int>(n));
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            cin >> grid[i][j];
+
+    cout << orangesRotting(grid) << endl;
+    return 0;
+}
