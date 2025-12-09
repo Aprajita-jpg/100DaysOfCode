@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to check if linked list is circular
+bool isCircular(Node* head) {
+    if (!head) return true;  // empty list is considered circular
+
+    Node* curr = head->next;
+    while (curr != NULL && curr != head) {
+        curr = curr->next;
+    }
+
+    return (curr == head);
+}
+
+// Insert at end
+void insert(Node*& head, int val) {
+    Node* newNode = new Node();
+    newNode->data = val;
+    new
