@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Function to remove element from list
+Node* removeElement(Node* head, int val) {
+    Node dummy;
+    dummy.next = head;
+    Node* curr = &dummy;
+
+    while (curr->next != NULL) {
+        if (curr->next->data ==
+}
