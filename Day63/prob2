@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+    Node* child;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+        child = NULL;
+    }
+};
+
+// Helper function to flatten
+Node* flattenUtil(Node* head) {
+    Node* curr = head;
+    Node* tail = head;
+
+    while (curr) {
+        Node* nextNode = curr->next;
+
+        // If child exists, flatten it
+        if (curr->child) {
+            Node* childHead = curr->child;
+            Node* childTail = flattenUtil(childHead);
+
+            curr->next = childHead;
+            curr->child = NULL;
+            childTail->next = nextNode;
+
+            tail = childTail;
+        } else {
+            tail = curr;
+        }
+
+        curr = nextNode;
+    }
+
+    return tail;
+}
+
+// Main flatten function
+Node* flatten(Node* head) {
+    if (!head) return NULL;
+    flattenUtil(head);
+    return head;
+}
+
+// Print flattened list
+void printList(Node* head) {
+    while (head) {
+        cout << head->data << " -> ";
+        head = head->next;
+    }
+    cout << "NULL";
+}
+
+int main() {
+    // Creating sample multilevel list
+    Node* head = new Node(1);
+    head->next = new Node(2);
+    head->next->next = new Node(3);
+    head->next->next->next = new Node(4);
+
+    head->next->child = new Node(7);
+    head->next->child->next
